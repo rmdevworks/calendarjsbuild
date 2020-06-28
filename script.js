@@ -1,11 +1,20 @@
 const date = new Date();
 
+date.setDate(1);
+
+console.log(date.getDay());
+
 const monthDays = document.querySelector(".days");
 
 const lastDay = new Date(date.getFullYear(),
-date.getMonth() + 1, 0)
+date.getMonth() + 1, 0).getDate();
 
-console.log(lastDay);
+const prevLastDay = new Date(date.getFullYear(),
+date.getMonth(), 0).getDate();
+
+console.log(prevLastDay);
+
+const firstDayIndex = date.getDay()
 
 const months = [
     "January",
@@ -30,7 +39,11 @@ document.querySelector(".date p").innerHTML
 
 let days = "";
 
-for (let i = 1; i<= 31;i++) {
+//for(let x = firstDayIndex; x > 0; x--){
+//    days += `<div class="prev-date">${}</div>`
+//}
+
+for (let i = 1; i<= lastDay; i++) {
     days += `<div>${i}</div>`;
     monthDays.innerHTML = days;
 }
